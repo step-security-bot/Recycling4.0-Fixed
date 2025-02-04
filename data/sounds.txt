@@ -1,0 +1,38 @@
+
+#######################################################
+#
+#  Begin Recycling
+#
+#######################################################
+
+OBJECT TrashBin
+	EVENT ProcessTrash          
+		SOUNDNAME          Room_Kitchen_Extractor
+		SOURCETYPE         0
+		POSITIONTYPE       1
+		INSTANCETYPE       0
+		LOOPTYPE           0
+		MINDISTANCE        7.25
+		VOLUME             PARAMETER TypeFixedValue        6.23  UpdateOncePerLoop
+		FREQUENCY          PARAMETER TypeFixedValue        1.40  UpdateOncePerLoop
+	END
+END
+
+OBJECT TrashCompactor
+	EVENT CompactTrash          
+		SOUNDNAME          Room_Kitchen_Extractor
+		SOURCETYPE         0
+		POSITIONTYPE       1
+		INSTANCETYPE       0
+		LOOPTYPE           0
+		MINDISTANCE        7.25
+		VOLUME             PARAMETER TypeFixedValue        6.23  UpdateOncePerLoop
+		FREQUENCY          PARAMETER TypeFixedValue        1.40  UpdateOncePerLoop
+	END
+END
+
+#######################################################
+#
+#  End Recycling
+#
+#######################################################

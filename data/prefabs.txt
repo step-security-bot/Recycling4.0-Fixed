@@ -1,0 +1,72 @@
+
+BEGIN Prefab
+	Name	Greenhouse5x5
+	w	7
+	h	7
+    RoomType    R4_Greenhouse
+#	CustomArea 1
+	
+#	BEGIN Material	Type	LongGrass		x	1	y	1	w 	5	h	5	END
+	
+	BEGIN Object    Type    R4_GardenPotTomato		x   1   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   2   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   3   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   4   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   5   y   1   orX 0   orY 1   END
+	
+	BEGIN Object    Type    Door					x   0   y   3   orX -1   orY 0   END
+	
+	BEGIN Object    Type    R4_GardenPotTomato		x   1   y   5   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   2   y   5   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   3   y   5   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   4   y   5   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   5   y   5   orX 0   orY 1   END
+	
+	BEGIN Object    Type    R4_GardenControlSpawner5		x   2   y   3   orX 0   orY 1   END
+END
+
+BEGIN Prefab
+	Name	Greenhouse7x7
+	w	9
+	h	9
+    RoomType    R4_Greenhouse
+#	CustomArea 1
+	
+#	BEGIN Material	Type	LongGrass		x	1	y	1	w 	7	h	7	END
+	
+	BEGIN Object    Type    R4_GardenPotTomato		x   1   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   2   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   3   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   4   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   5   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   6   y   1   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   7   y   1   orX 0   orY 1   END
+	
+	BEGIN Object    Type    R4_GardenPotTomato		x   1   y   2   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   2   y   2   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   3   y   2   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   4   y   2   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   5   y   2   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   6   y   2   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   7   y   2   orX 0   orY 1   END
+		
+	BEGIN Object    Type    Door					x   0   y   3   orX -1   orY 0   END
+	
+	BEGIN Object    Type    R4_GardenPotTomato		x   1   y   6   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   2   y   6   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   3   y   6   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   4   y   6   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   5   y   6   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   6   y   6   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   7   y   6   orX 0   orY 1   END
+	
+	BEGIN Object    Type    R4_GardenPotTomato		x   1   y   7   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   2   y   7   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   3   y   7   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   4   y   7   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   5   y   7   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   6   y   7   orX 0   orY 1   END
+	BEGIN Object    Type    R4_GardenPotTomato		x   7   y   7   orX 0   orY 1   END
+	
+	BEGIN Object    Type    R4_GardenControlSpawner7		x   3   y   4   orX 0   orY 1   END
+END

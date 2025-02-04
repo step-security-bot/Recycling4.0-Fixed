@@ -1,0 +1,2542 @@
+
+# # # # # # # # # # # # # # # # # # # # #
+#
+#  Recycling 4.0
+#
+# # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+########################### GARBAGE TYPES
+
+BEGIN Object
+	Name				 Garbage
+	MoveSpeedFactor		 0.800000
+	Toughness			 1.00000
+	MaxStackSize		 -1			
+	Properties			 Scripted
+	Sprite				 Garbage
+END
+
+BEGIN Object
+	Name				 R4_UnsortedTrash
+	MoveSpeedFactor		 0.800000
+	Toughness			 1.00000
+	MaxStackSize		 60
+	Price				 -1
+    RenderDepth			 1
+	Properties			 Sellable
+    Properties           Material
+	BEGIN	Sprite		 x 0 y 6 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 6 y 6 w 2 h 2 RotateType 4 END
+	WorkGroup			 R4_Recycling
+	Properties			 Scripted
+END
+
+BEGIN Object
+	Name				 R4_UnsortedGarbage
+	MoveSpeedFactor		 0.800000
+	Toughness			 1.00000
+	MaxStackSize		 60
+	Price				 -1
+    RenderDepth			 1
+	Properties			 Sellable
+    Properties           Material
+	BEGIN	Sprite		 x 0 y 6 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 6 y 6 w 2 h 2 RotateType 4 END
+	WorkGroup			 R4_Recycling
+END
+
+BEGIN Object
+	Name				 R4_SortedGarbage
+	MoveSpeedFactor		 0.800000
+	Toughness			 1.00000
+	MaxStackSize		 30
+	Price				 -1
+    RenderDepth			 1
+	Properties			 Sellable
+    Properties           Material
+	BEGIN	Sprite		 x 0 y 8 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 6 y 8 w 2 h 2 RotateType 4 END
+	WorkGroup			 R4_Recycling
+END
+
+BEGIN Object
+	Name				 R4_SortedGarbageExport
+	MoveSpeedFactor		 0.800000
+	Toughness			 1.00000
+	MaxStackSize		 60
+	Price				 -2
+    RenderDepth			 1
+	Properties			 Sellable
+    Properties           Material
+	BEGIN	Sprite		 x 0 y 10 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 6 y 10 w 2 h 2 RotateType 4 END
+	WorkGroup			 R4_Recycling
+END
+
+BEGIN Object
+	Name				 R4_GreenGarbage
+	MoveSpeedFactor		 0.800000
+	Toughness			 1.00000
+	MaxStackSize		 40
+	Price				 -2
+    RenderDepth			 1
+	Properties			 Sellable
+    Properties           Material
+	BEGIN	Sprite		 x 0 y 4 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 6 y 4 w 2 h 2 RotateType 4 END
+	WorkGroup			 R4_Recycling
+END
+
+BEGIN Object
+	Name				 R4_SuperCompost
+	Price				 -2
+	Properties			 Sellable
+	MaxStackSize		 250
+	BEGIN	Sprite		 x 8 y 18 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 38 y 28 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	WorkGroup			 R4_GardenGroup
+END
+
+
+
+
+########################### GARBAGE PROCESSORS
+
+
+BEGIN Object
+	Name				 R4_TrashBin
+	Width				 1
+	Height				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.800000
+	Toughness			 3.00000
+	Price				 -20
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 33 y 1 w 2 h 2 RotateType 3 TopAligned true
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 2 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 3 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 4 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 5 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 6 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+	END
+	BEGIN	Sprite		 x 33 y 3 w 2 h 2 RotateType 3 TopAligned true
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 2 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 3 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 4 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 5 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 6 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+	END
+	BEGIN	Sprite		 x 33 y 5 w 2 h 2 RotateType 3 TopAligned true
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 2 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 3 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 4 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 5 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 6 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+	END
+	NumSprites			 3
+	NumSlots			 8
+	RenderDepth			 2
+	MadeOf				 Composite
+	Properties			 StaticObject
+	WorkGroup			 R4_Recycling
+	Properties			 Scripted
+	Filter				 Catering
+END
+
+# obsolete, hidden from objects menu
+BEGIN Object     
+    Name                 Bin
+    MoveSpeedFactor      0.800000  
+    Toughness            3.00000
+	Price				 -20
+    Group                StaticObject  
+    BlockedBy            Wall  
+    BlockedBy            StaticObject  
+    BlockedBy            UtilityStation  
+    Sprite               Bin  
+    MadeOf               Composite
+    Properties           StaticObject
+	Properties			 Sellable
+END
+
+BEGIN Object
+	Name				 R4_RecycleBin
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.800000
+	Toughness			 3.00000
+	Price				 -20
+	Group				 StaticObject
+	Properties			 RoomSpecific
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 33 y 7 w 2 h 2 RotateType 3 TopAligned true
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 2 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 3 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 4 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 5 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 6 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+	END
+	BEGIN	Sprite		 x 33 y 9 w 2 h 2 RotateType 3 TopAligned true
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 2 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 3 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 4 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 5 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 6 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+	END
+	BEGIN	Sprite		 x 33 y 11 w 2 h 2 RotateType 3 TopAligned true
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 1 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 2 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 3 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 4 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 5 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 6 END
+		BEGIN	Marker	 x 3 y 0.15 orientation.x 0 orientation.y -1 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0.15 orientation.x 1 orientation.y 0 Index 7 END
+	END
+	NumSprites			 3
+	NumSlots			 8
+	RenderDepth			 2
+	MadeOf				 Composite
+	Properties			 StaticObject
+	WorkGroup			 R4_Recycling
+	Properties			 Scripted
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 R4_TrashCompactor
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.6
+	Toughness			 90
+	Price				 -500
+	Group				 StaticObject
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BlockedBy			 Wall
+	MadeOf				 SolidMetal
+	Properties			 StaticObject
+	NumSlots			 8
+	NumSprites			 3
+	RenderDepth			 2
+	Width				 2
+	Height				 1
+	BEGIN	Sprite		 x 0 y 22 w 4 h 2 RotateType 2 TopAligned false
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+
+		BEGIN	Marker	 x 5 y -1 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y -1 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0 orientation.x -1 orientation.y 0 Index 7 END
+	END
+	BEGIN	Sprite		 x 6 y 22 w 4 h 2 RotateType 2 TopAligned false
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+
+		BEGIN	Marker	 x 5 y -1 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y -1 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0 orientation.x -1 orientation.y 0 Index 7 END
+	END
+	BEGIN	Sprite		 x 12 y 22 w 4 h 2 RotateType 2 TopAligned false
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 1.5 y 0.15 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 2 y 0.15 orientation.x 0 orientation.y 0 Index 7 END
+
+		BEGIN	Marker	 x 5 y -1 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 5 y -1 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 2 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 5 END
+		BEGIN	Marker	 x 5 y -0.5 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN	Marker	 x 5 y 0 orientation.x -1 orientation.y 0 Index 7 END
+	END
+	ToolbarSprite		 Bin
+	Properties			 Scripted
+	WorkGroup			 R4_Recycling
+	Properties			 Uncloneable
+	Filter				 Work
+END
+
+
+BEGIN Object
+	Name				 R4_RecycleDeskProcessor
+	Width				 3
+	Height				 1
+	MoveSpeedFactor		 0.50000
+	Toughness			 100000.0000
+	NumSlots			 3
+	Properties			 Processor
+	WorkGroup			 R4_Recycling
+	Properties			 Scripted
+	BEGIN	Sprite		 x 28 y 30 w 6 h 2 RotateType 1
+		BEGIN	Marker	 x 1 y 1.25 orientation.x 0 orientation.y 1 Index 0 END
+		BEGIN	Marker	 x 3 y 0.75 orientation.x 0 orientation.y 1 Index 1 END
+		BEGIN	Marker	 x 5 y 1.9 orientation.x 0 orientation.y 1 Index 2 END
+		
+		BEGIN	Marker	 x 11 y 0.1 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN	Marker	 x 9 y 0.1 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN	Marker	 x 7 y 0.1 orientation.x 0 orientation.y -1 Index 2 END
+		
+		BEGIN	Marker	 x 12.1 y 0.5 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 13 y -1.25 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 12.1 y -3.5 orientation.x -1 orientation.y 0 Index 2 END
+		
+		BEGIN	Marker	 x 13.9 y 0.5 orientation.x 1 orientation.y 0 Index 0 END
+		BEGIN	Marker	 x 13 y -1.25 orientation.x 1 orientation.y 0 Index 1 END
+		BEGIN	Marker	 x 13.9 y -3.5 orientation.x 1 orientation.y 0 Index 2 END
+	END
+	Properties			 Uncloneable
+END
+
+BEGIN Object
+	Name				 R4_RecycleDeskVisible
+	Width				 5
+	Height				 4
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.50000
+	Toughness			 10.0000
+	Price				 -250
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	MadeOf				 Composite
+	Properties			 RoomSpecific
+	WorkGroup			 R4_Recycling
+	Properties			 Scripted
+	BEGIN ToolbarSprite	 x 4 y 26 w 2 h 2 END
+	BEGIN	Sprite		 x 0 y 24 w 10 h 8 RotateType 1 TopAligned false END
+	Properties			 Uncloneable
+	Filter				 Work
+END
+
+
+
+
+########################### SMALL TABLES WITH 8 SLOTS
+
+BEGIN Object     
+	Name				 R4_RecycleTable
+	Width				 2
+	ConstructionTime	 0
+	Toughness			 10.0000
+	Price				 -50
+	Group				 StaticObject
+	BlockedBy			 Wall
+	Properties			 RoomSpecific
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Composite
+	Properties			 StaticObject
+	NumSlots			 8
+	Properties			 Processor
+	BEGIN	Sprite		 x 28 y 22 w 4 h 2 RotateType 1 TopAligned false
+		BEGIN Marker	 x 1.016875 y 0.71875 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN Marker	 x 3.016875 y 0.71875 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN Marker	 x 1.026875 y 0.72875 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN Marker	 x 3.026875 y 0.72875 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN Marker	 x 1.036875 y 0.73875 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN Marker	 x 3.036875 y 0.73875 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN Marker	 x 1.046875 y 0.74875 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN Marker	 x 3.046875 y 0.74875 orientation.x 0 orientation.y 0 Index 7 END
+		
+		BEGIN Marker	 x 5.016875 y 0.71875 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN Marker	 x 7.016875 y 0.71875 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN Marker	 x 5.026875 y 0.72875 orientation.x 0 orientation.y -1 Index 2 END
+		BEGIN Marker	 x 7.026875 y 0.72875 orientation.x 0 orientation.y -1 Index 3 END
+		BEGIN Marker	 x 5.036875 y 0.73875 orientation.x 0 orientation.y -1 Index 4 END
+		BEGIN Marker	 x 7.036875 y 0.73875 orientation.x 0 orientation.y -1 Index 5 END
+		BEGIN Marker	 x 5.046875 y 0.74875 orientation.x 0 orientation.y -1 Index 6 END
+		BEGIN Marker	 x 7.046875 y 0.74875 orientation.x 0 orientation.y -1 Index 7 END
+		
+		BEGIN Marker	 x 9.015625 y -0.91875 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN Marker	 x 9.015625 y 0.41875 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN Marker	 x 9.025625 y -0.92875 orientation.x -1 orientation.y 0 Index 2 END
+		BEGIN Marker	 x 9.025625 y 0.42875 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN Marker	 x 9.035625 y -0.93875 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN Marker	 x 9.035625 y 0.43875 orientation.x -1 orientation.y 0 Index 5 END
+		BEGIN Marker	 x 9.045625 y -0.94875 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN Marker	 x 9.045625 y 0.44875 orientation.x -1 orientation.y 0 Index 7 END
+	END
+	ToolbarSprite		 StackWood
+	Filter				 Work
+END
+
+
+
+
+########################### ROOMS REGARDING RECYCLING
+
+BEGIN Room
+    Name				 Garbage
+	BEGIN LikelyObject	Id   	R4_TrashCompactor  END
+	BEGIN Contraband	Id 		Cellphone	END
+	BEGIN Contraband	Id		Club		END
+	BEGIN Contraband	Id		PianoWire	END
+	BEGIN Contraband	Id		Shank		END
+	BEGIN Contraband	Id		WoodenPickAxe	END
+	WorkGroup			 R4_Recycling
+	Qualification		 R4_RecycleGarbage
+END
+
+BEGIN Room
+	Name				 R4_Recycling
+    Properties           PrisonersCanWork
+	WorkGroup			 R4_Recycling
+    Qualification        R4_RecycleGarbage
+    BEGIN Requirement Type Object  Id R4_RecycleDeskProcessor END
+    BEGIN Requirement Type Object  Id R4_RecycleDeskVisible END
+    BEGIN Requirement Type Object  Id R4_RecycleTable END
+	BEGIN LikelyObject	Id   	R4_TrashBin	     END
+	BEGIN LikelyObject	Id   	R4_TrashCompactor  END
+    BEGIN LikelyObject  Id      FirstAidBox END
+    BEGIN LikelyObject  Id      MetalDetector   END
+    BEGIN LikelyObject  Id      FireExtinguisher END
+    BEGIN Contraband    Id      Axe             END
+    BEGIN Contraband    Id      Booze           END
+    BEGIN Contraband    Id      Cigs            END
+    BEGIN Contraband    Id      Club            END
+    BEGIN Contraband    Id      Drill           END
+    BEGIN Contraband    Id      Drugs           END
+    BEGIN Contraband    Id      Fork            END
+    BEGIN Contraband    Id      Hammer          END
+    BEGIN Contraband    Id      Knife           END
+    BEGIN Contraband    Id      Lighter         END
+    BEGIN Contraband    Id      Medicine        END
+    BEGIN Contraband    Id      MobilePhone     END
+    BEGIN Contraband    Id      Needle          END
+    BEGIN Contraband    Id      Poison          END
+    BEGIN Contraband    Id      Rope            END
+    BEGIN Contraband    Id      Saw             END
+    BEGIN Contraband    Id      Screwdriver     END
+    BEGIN Contraband    Id      Shank           END
+    BEGIN Contraband    Id      Spade           END
+    BEGIN Contraband    Id      Spoon           END
+    BEGIN Contraband    Id      Scissors        END
+    BEGIN Contraband    Id      Toothbrush      END
+    BEGIN Contraband    Id      WoodenPickAxe   END
+    BEGIN Contraband    Id      R4_DDT          END
+    BEGIN Contraband    Id      R4_Trowel       END
+    BEGIN Contraband    Id      R4_Pruners      END
+    BEGIN Contraband    Id      R4_Wateringcan  END
+END
+
+
+
+
+
+# # # # # # # # # # # # # # # # # # # # #
+#
+#  Garden 4.0
+#
+# # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+########################### EYE CANDY
+
+BEGIN Object     
+    Name                 R4_SmallGardenBench
+    Width                2 
+    Height               1 
+    ConstructionTime     1.00000  
+    MoveSpeedFactor      0.500000  
+    Toughness            20.0000
+    Price                -15  
+    NumSlots             2 
+    Group                StaticObject  
+    BlockedBy            Wall
+	Properties			 RoomSpecific
+    BlockedBy            StaticObject  
+    BlockedBy            UtilityStation 
+    MadeOf               Composite
+    Properties           StaticObject
+	BEGIN	Sprite		 x 32 y 14 w 4 h 2 RotateType 1
+		BEGIN Marker	 x 1 y 0.9 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN Marker	 x 3 y 0.9 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN Marker	 x 5 y 0.9 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN Marker	 x 7 y 0.9 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN Marker	 x 9 y -1 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN Marker	 x 9 y 0.75 orientation.x -1 orientation.y 0 Index 1 END
+	END
+	ToolbarSprite		 StackWood
+END
+
+BEGIN Object
+	Name				 R4_FenceBush
+	Width				 1
+	Height				 1
+	ConstructionTime	 3.00000
+	MoveSpeedFactor		 0.50000
+	Toughness			 1.0000
+	Price				 -50
+	RenderDepth			 1
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	Properties			 StaticObject
+	BEGIN	Sprite		 x 39 y 23 w 2 h 2 RotateType 0 END
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FoliagePlantA
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         true
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 0 y 14 w 2 h 2 RotateType 4 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FoliagePlantB
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         true
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 2 y 14 w 2 h 2 RotateType 4 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FoliagePlantC
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         true
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 6 y 14 w 2 h 2 RotateType 4 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FoliagePlantD
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         true
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite 		 x 16 y 10 w 2 h 2 RotateType 4 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FoliagePlantE
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 18 y 0 w 2 h 3 RotateType 4 TopAligned false END
+	BEGIN	ToolbarSprite x 18 y 1 w 2 h 2 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FoliagePlantF
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 18 y 9 w 2 h 2 RotateType 4 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FoliagePlantG
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 18 y 11 w 2 h 2 RotateType 4 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FoliagePlantH
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 18 y 13 w 2 h 3 RotateType 4 TopAligned false END
+	BEGIN	ToolbarSprite x 18 y 14 w 2 h 2 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FoliagePlantI
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 39 y 16 w 2 h 2 RotateType 4 TopAligned false END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FoliagePlantJ
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 35 y 18 w 2 h 2 RotateType 4 TopAligned false END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FoliagePlantK
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 37 y 18  w 2 h 2 RotateType 4 TopAligned false END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FoliagePlantL
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 39 y 20 w 2 h 3 RotateType 4 TopAligned false END
+	BEGIN	ToolbarSprite x 39 y 21 w 2 h 2 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersA
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 8 y 16 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersB
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 10 y 16 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersC
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 12 y 16 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersD
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite x 16 y 12 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FlowersE
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 20 y 12 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersShared
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite x 16 y 0 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersMinsec
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 16 y 2 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersMedsec
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 16 y 4 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersMaxsec
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 16 y 6 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowersPrsec
+    Width                1
+    ConstructionTime     1.00000
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -50
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 16 y 8 w 2 h 2 RotateType 0 END
+    MadeOf               Wood
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush1
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 20 y 8 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush2
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 20 y 10 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush3
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 14 y 16 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_SmallBush3
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 14 y 14 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush4
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 39 y 18 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush5
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 33 y 16 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush6
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 35 y 16 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush7
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 37 y 16 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush8
+	Width				 2
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 28 y 24 w 4 h 2 RotateType 0 END
+	BEGIN	ToolbarSprite x 29 y 24 w 2 h 2 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Bush9
+	Width				 2
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 32 y 24 w 4 h 2 RotateType 0 END
+	BEGIN	ToolbarSprite x 33 y 24 w 2 h 2 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Buxus
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 20 y 14 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_SmallBuxus
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 16 y 14 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+    Name                 R4_FlowerPot
+    Width                1
+    ConstructionTime     -1
+    MoveSpeedFactor      0.900000
+    Toughness            10.0000
+    Price                -1
+    AttachToWall         false
+    Group                StaticObject
+    BlockedBy            Wall
+    BlockedBy            StaticObject
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 1 y 20 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 7 y 20 w 2 h 2 RotateType 4 END
+	BEGIN   Sprite		 x 13 y 20 w 2 h 2 RotateType 4 END
+	BEGIN   Sprite		 x 19 y 20 w 2 h 2 RotateType 4 END
+	SpriteVariants		 4
+    MadeOf               Composite
+    Properties           StaticObject
+    Properties           BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FlowerPot1
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 false
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 1 y 20 w 2 h 2 RotateType 4 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FlowerPot2
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 false
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 7 y 20 w 2 h 2 RotateType 4 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FlowerPot3
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 false
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN   Sprite		 x 13 y 20 w 2 h 2 RotateType 4 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FlowerPot4
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 false
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN   Sprite		 x 19 y 20 w 2 h 2 RotateType 4 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FlowerPot5
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 18 y 3 w 2 h 3 RotateType 4 END
+	BEGIN	ToolbarSprite x 18 y 4 w 2 h 2 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_FlowerPot6
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 true
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	BEGIN	Sprite		 x 18 y 6 w 2 h 3 RotateType 4 END
+	BEGIN	ToolbarSprite x 18 y 7 w 2 h 2 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Tulips1
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 20 y 0 w 2 h 2 RotateType 4 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Tulips2
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 20 y 2 w 2 h 2 RotateType 4 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Tulips3
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 20 y 4 w 2 h 2 RotateType 4 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Tulips4
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -10
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 20 y 6 w 2 h 2 RotateType 4 END
+	MadeOf				 Composite
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_BeeHive
+	Width				 1
+	Height				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.50000
+	Toughness			 10.0000
+	MadeOf				 Wood
+	Price				 -100
+	RenderDepth			 1
+	AttachToWall		 false
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	Properties			 StaticObject
+	BEGIN	Sprite		 x 34 y 20 w 2 h 2 RotateType 4 END
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Hedge1
+	Width				 2
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 28 y 26 w 4 h 2 RotateType 0 END
+	BEGIN	ToolbarSprite x 29 y 26 w 2 h 2 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Hedge2
+	Height				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 32 y 26 w 3 h 2 RotateType 0 END
+	BEGIN	ToolbarSprite x 33 y 26 w 2 h 2 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Hedge3
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 36 y 26 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+BEGIN Object
+	Name				 R4_Hedge4
+	Width				 1
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.900000
+	Toughness			 10.0000
+	Price				 -50
+	AttachToWall		 false
+	Group				 StaticObject
+	BEGIN	Sprite		 x 36 y 24 w 2 h 2 RotateType 0 END
+	MadeOf				 Wood
+	Properties			 StaticObject
+	Properties			 BlockMovement
+	Filter				 Foliage
+END
+
+
+
+
+########################### TREES (taken from Vending Machines 2.0)
+
+BEGIN Object
+	Name				 VendingApple
+	Width				 1
+	Height				 1
+	RenderDepth			 1
+	Properties			 Material
+	Price				 -2
+	MaxStackSize		 20
+    SpriteScale          0.5
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+	BEGIN	Sprite		 x 22 y 13 w 1 h 1 RotateType 0 END
+	BEGIN	StackSprite	 x 5 y 0 w 2 h 2 RotateType 4 END
+END
+
+BEGIN Object
+	Name				 VendingTreeFruitApple
+	RenderDepth			 2
+	WorkGroup			 R4_GardenGroup
+	NumSprites			 15
+    SpriteScale          0.5
+	BEGIN	Sprite		 x 22 y 15 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 0 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 1 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 2 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 3 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 4 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 5 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 6 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 7 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 8 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 9 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 10 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 11 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 12 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 22 y 13 w 1 h 1 RotateType 0 END
+	Properties			 Sellable
+END
+
+BEGIN Object
+	Name				 VendingTreeFruitRottenApple
+	RenderDepth			 2
+	WorkGroup			 R4_GardenGroup
+    SpriteScale          0.5
+	BEGIN	Sprite		 x 22 y 14 w 1 h 1 RotateType 0 END
+	Properties			 Rubbish
+END
+
+BEGIN Object     
+    Name                 VendingTreeApple  
+    Width                3
+    Height               3
+	ConstructionTime	 0
+    Toughness            10.0000
+	Price				 -100
+    RenderDepth          1
+    Group                StaticObject  
+    BlockedBy            Wall  
+    BlockedBy            StaticObject  
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 16 y 16 w 4 h 4 RotateType 4 END
+    SpriteScale          0.9
+    MadeOf               Wood
+    Properties           StaticObject
+	Properties			 Scripted
+	Properties			 DontAvoid
+	WorkGroup			 R4_GardenGroup
+	IndoorOutdoor        OutdoorOnly
+	Filter				 Foliage
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 VendingCherry
+	Width				 1
+	Height				 1
+	RenderDepth			 1
+	Properties			 Material
+	Price				 -2
+	MaxStackSize		 20
+    SpriteScale          0.5
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+	BEGIN	Sprite		 x 23 y 13 w 1 h 1 RotateType 0 END
+	BEGIN	StackSprite	 x 5 y 2 w 2 h 2 RotateType 4 END
+END
+
+BEGIN Object
+	Name				 VendingTreeFruitCherry
+	RenderDepth			 2
+	WorkGroup			 R4_GardenGroup
+	NumSprites			 15
+    SpriteScale          0.5
+	BEGIN	Sprite		 x 23 y 15 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 0 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 1 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 2 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 3 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 4 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 5 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 6 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 7 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 8 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 9 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 10 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 11 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 12 w 1 h 1 RotateType 0 END
+	BEGIN	Sprite		 x 23 y 13 w 1 h 1 RotateType 0 END
+	Properties			 Sellable
+END
+
+BEGIN Object
+	Name				 VendingTreeFruitRottenCherry
+	RenderDepth			 2
+	WorkGroup			 R4_GardenGroup
+    SpriteScale          0.5
+	BEGIN	Sprite		 x 23 y 14 w 1 h 1 RotateType 0 END
+	Properties			 Rubbish
+END
+
+BEGIN Object     
+    Name                 VendingTreeCherry  
+    Width                3
+    Height               3
+	ConstructionTime	 0
+    Toughness            10.0000
+	Price				 -100
+    RenderDepth          1
+    Group                StaticObject  
+    BlockedBy            Wall  
+    BlockedBy            StaticObject  
+    BlockedBy            UtilityStation
+	BEGIN	Sprite		 x 20 y 16 w 4 h 4 RotateType 4 END
+    SpriteScale          0.9
+    MadeOf               Wood
+    Properties           StaticObject
+	Properties			 Scripted
+	Properties			 DontAvoid
+	WorkGroup			 R4_GardenGroup
+	IndoorOutdoor        OutdoorOnly
+	Filter				 Foliage
+	Filter				 Work
+END
+
+
+
+
+########################### GARDEN / GREENHOUSE REFORM
+
+
+
+BEGIN Object
+	Name				 R4_GardenSeed
+	Price				 -2
+	MaxStackSize		 250
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 4 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 14 y 4 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	Teleportable		 true
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object
+	Name				 R4_GardenCompost
+	Price				 -2
+	MaxStackSize		 250
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 18 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 14 y 18 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	Teleportable		 true
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object
+	Name				 R4_GardenFertilizer
+	Price				 -5
+	MaxStackSize		 250
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 10 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 14 y 10 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	Teleportable		 true
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object     
+    Name                 R4_GardenDDT
+	Price				 -3
+	MaxStackSize		 250
+	RenderDepth			 2
+	SpriteScale			 0.75
+	BEGIN	Sprite		 x 0 y 16 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 6 y 16 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	Teleportable		 true
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object
+	Name				 R4_GreenhouseSeed
+	Price				 -2
+	MaxStackSize		 250
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 4 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 14 y 4 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	Teleportable		 true
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object
+	Name				 R4_GreenhouseCompost
+	Price				 -2
+	MaxStackSize		 250
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 18 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 14 y 18 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	Teleportable		 true
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object
+	Name				 R4_GreenhouseFertilizer
+	Price				 -5
+	MaxStackSize		 250
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 10 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 14 y 10 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	Teleportable		 true
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object     
+    Name                 R4_GreenhouseDDT
+	Price				 -3
+	MaxStackSize		 250
+	RenderDepth			 2
+	SpriteScale			 0.75
+	BEGIN	Sprite		 x 0 y 16 w 2 h 2 RotateType 4 END
+	BEGIN	StackSprite	 x 6 y 16 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	Teleportable		 true
+	Properties			 Sellable
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Equipment
+	Name				 R4_DDTSprayer
+	BEGIN	Sprite		 x 33 y 18 w 2 h 2 RotateType 0 TopAligned false
+		BEGIN	Marker	 x 1 y 1.53125 orientation.x 0 orientation.y 0 Index 0 END
+	END
+	Scale				 0.600000
+	Properties			 Metal
+	Properties			 Smelly
+	Properties			 NoImport
+END
+
+BEGIN Object
+	Name				 R4_GardenTomato
+	Price				 -5
+	MaxStackSize		 40
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 6 w 2 h 2 RotateType 0 END
+	BEGIN	StackSprite	 x 14 y 6 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	WorkGroup			 R4_GardenGroup
+	Properties			 Sellable
+END
+
+BEGIN Object
+	Name				 R4_GardenCucumber
+	Price				 -5
+	MaxStackSize		 40
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 8 w 2 h 2 RotateType 0 END
+	BEGIN	StackSprite	 x 14 y 8 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	WorkGroup			 R4_GardenGroup
+	Properties			 Sellable
+END
+
+BEGIN Object
+	Name				 R4_GardenRose
+	Price				 -5
+	MaxStackSize		 40
+	RenderDepth			 2
+	BEGIN	Sprite		 x 8 y 12 w 2 h 2 RotateType 0 END
+	BEGIN	StackSprite	 x 14 y 12 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	WorkGroup			 R4_GardenGroup
+	Properties			 Sellable
+END
+
+BEGIN Object
+	Name				 R4_GardenLily
+	Price				 -5
+	MaxStackSize		 40
+	RenderDepth			 2
+	BEGIN	Sprite		 x 0 y 12 w 2 h 2 RotateType 0 END
+	BEGIN	StackSprite	 x 6 y 12 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	WorkGroup			 R4_GardenGroup
+	Properties			 Sellable
+END
+
+BEGIN Object
+	Name				 R4_GardenPot
+	MoveSpeedFactor		 0.90000
+	Toughness			 3.00000
+	RenderDepth			 1
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Wood
+	AttachToWall		 false
+	NumSprites			 11
+	BEGIN	Sprite		 x 8 y 0 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 10 y 0 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 12 y 0 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 14 y 0 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 8 y 2 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 10 y 2 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 12 y 2 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 14 y 2 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 12 y 0 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 4 y 14 w 2 h 2 RotateType 4 END
+	BEGIN	Sprite		 x 21 y 20 w 2 h 2 RotateType 4 END
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Scripted
+	Properties			 Uncloneable
+END
+
+BEGIN Object
+	Name				 R4_GardenPotTomato
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.90000
+	Toughness			 3.00000
+	Price				 -50
+	RenderDepth			 1
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Wood
+	AttachToWall		 false
+	BEGIN	Sprite		 x 14 y 0 w 2 h 2 RotateType 4 END
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Scripted
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 R4_GardenPotCucumber
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.90000
+	Toughness			 3.00000
+	Price				 -50
+	RenderDepth			 1
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Wood
+	AttachToWall		 false
+	BEGIN	Sprite		 x 8 y 2 w 2 h 2 RotateType 4 END
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Scripted
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 R4_GardenPotRose
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.90000
+	Toughness			 3.00000
+	Price				 -50
+	RenderDepth			 1
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Wood
+	AttachToWall		 false
+	BEGIN	Sprite		 x 10 y 2 w 2 h 2 RotateType 4 END
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Scripted
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 R4_GardenPotLily
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.90000
+	Toughness			 3.00000
+	Price				 -50
+	RenderDepth			 1
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Wood
+	AttachToWall		 false
+	BEGIN	Sprite		 x 12 y 2 w 2 h 2 RotateType 4 END
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Scripted
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 R4_GardenPotIngredients
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.90000
+	Toughness			 3.00000
+	Price				 -50
+	RenderDepth			 1
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Wood
+	AttachToWall		 false
+	BEGIN	Sprite		 x 14 y 2 w 2 h 2 RotateType 4 END
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Scripted
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 R4_GardenPotPotatoes
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.90000
+	Toughness			 3.00000
+	Price				 -50
+	RenderDepth			 1
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Wood
+	AttachToWall		 false
+	BEGIN	Sprite		 x 12 y 0 w 2 h 2 RotateType 4 END
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Scripted
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 R4_GardenAreaCovered
+	Width				 1
+	Height				 1
+	RenderDepth			 5
+	SpriteScale			 0.5
+	BEGIN Sprite		 x 33 y 21 w 1 h 1 RotateType 4 END
+	Properties			 CanPlaceOnRoad
+	Properties			 Sellable
+	Properties			 Scripted
+END
+
+BEGIN Object
+	Name				 R4_GardenControl
+	Width				 3
+	Height				 2
+	Toughness			 100.0000
+	RenderDepth			 1
+	Group				 StaticObject
+	MadeOf				 HollowMetal
+	Properties			 StaticObject
+	Properties			 DontAvoid
+	Properties			 RoomSpecific
+	NumSlots			 5
+	NumSprites			 2
+	BEGIN	Sprite		 x 8 y 14 w 3 h 2 RotateType 4
+		BEGIN Marker	 x 0.25 y 1.25 Index 0 END
+		BEGIN Marker	 x 1 y 1.5 Index 1 END
+		BEGIN Marker	 x 2 y 1.5 Index 2 END
+		BEGIN Marker	 x 2.75 y 1.25 Index 3 END
+		BEGIN Marker	 x 1.5 y 1.75 Index 4 END
+    END
+	BEGIN	Sprite		 x 11 y 14 w 3 h 2 RotateType 4
+		BEGIN Marker	 x 0.25 y 1.25 Index 0 END
+		BEGIN Marker	 x 1 y 1.5 Index 1 END
+		BEGIN Marker	 x 2 y 1.5 Index 2 END
+		BEGIN Marker	 x 2.75 y 1.25 Index 3 END
+		BEGIN Marker	 x 1.5 y 1.75 Index 4 END
+    END
+	Properties			 Scripted
+	Properties			 Wired
+	SpecialRestriction	 NoShadow
+	Properties			 Uncloneable
+	GroundBaseOveride	 0
+END
+
+BEGIN Object
+	Name				 R4_GardenControlSpawner
+	Price				 -150
+	Width				 3
+	Height				 2
+	ConstructionTime	 0
+	Toughness			 100.0000
+	RenderDepth			 1
+	MadeOf				 HollowMetal
+	Properties			 StaticObject
+	Properties			 DontAvoid
+	Properties			 RoomSpecific
+	BEGIN	Sprite		 x 8 y 14 w 3 h 2 RotateType 4 END
+	BEGIN	ToolbarSprite x 9 y 14 w 2 h 2 END
+	Properties			 Scripted
+	Filter				 Work
+END
+
+BEGIN Object
+	Name				 R4_GardenControlSpawner5
+	Price				 -150
+	Width				 3
+	Height				 2
+	RenderDepth			 1
+	MadeOf				 HollowMetal
+	Properties			 StaticObject
+	Properties			 DontAvoid
+	Properties			 RoomSpecific
+	BEGIN	Sprite		 x 8 y 14 w 3 h 2 RotateType 0 END
+	Properties			 Scripted
+END
+
+BEGIN Object
+	Name				 R4_GardenControlSpawner7
+	Price				 -150
+	Width				 3
+	Height				 2
+	RenderDepth			 1
+	MadeOf				 HollowMetal
+	Properties			 StaticObject
+	Properties			 DontAvoid
+	Properties			 RoomSpecific
+	BEGIN	Sprite		 x 8 y 14 w 3 h 2 RotateType 0 END
+	Properties			 Scripted
+END
+
+BEGIN Object
+	Name				 R4_Shed2
+	Width				 4
+	Height				 6
+	MoveSpeedFactor		 0.50000
+	Toughness			 50.0000
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	RenderDepth			 1
+	MadeOf				 Wood
+	AttachToWall		 false
+	BEGIN	Sprite		 x 25 y 16 w 4 h 6 RotateType 4 END
+	BEGIN	Sprite		 x 29 y 16 w 4 h 6 RotateType 4 END
+	ToolbarSprite		 ShedToolbar
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Wired
+	Properties			 Scripted
+	GroundBaseOveride	 0
+	Properties			 Uncloneable
+END
+
+BEGIN Object
+	Name				 R4_ShedSpawner
+	Width				 4
+	Height				 6
+	ConstructionTime	 0
+	MoveSpeedFactor		 0.50000
+	Toughness			 50.0000
+	Price				 -200
+	Group				 StaticObject
+	BlockedBy			 Wall
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	RenderDepth			 1
+	MadeOf				 Wood
+	AttachToWall		 false
+	BEGIN	Sprite		 x 25 y 16 w 4 h 6 RotateType 4 END
+	ToolbarSprite		 ShedToolbar
+	Properties			 StaticObject
+	Properties			 RoomSpecific
+	Properties			 Scripted
+	Filter				 Work
+	Filter				 Catering
+END
+
+
+BEGIN Object
+	Name				 R4_GardenPrunedPlant
+	MaxStackSize		 20
+	RenderDepth			 2
+	BEGIN	Sprite		 x 0 y 18 w 2 h 2 RotateType 0 END
+	BEGIN	StackSprite	 x 6 y 18 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	WorkGroup			 R4_GardenGroup
+	Properties			 Scripted
+END
+
+BEGIN Object
+	Name				 R4_GardenDeadPlant
+	MaxStackSize		 20
+	RenderDepth			 2
+	BEGIN	Sprite		 x 0 y 18 w 2 h 2 RotateType 0 END
+	BEGIN	StackSprite	 x 6 y 18 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	WorkGroup			 R4_GardenGroup
+	Properties			 Scripted
+END
+
+BEGIN Object
+	Name				 R4_GardenPlantStruck
+	MaxStackSize		 20
+	RenderDepth			 2
+	BEGIN	Sprite		 x 23 y 20 w 2 h 2 RotateType 0 END
+	BEGIN	StackSprite	 x 6 y 18 w 2 h 2 RotateType 4 END
+	Properties			 Material
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object
+	Name				 R4_LightningStrike
+	Width				 2
+	Height				 2
+	RenderDepth			 3
+	NumSprites			 10
+	NumSlots			 1
+	BEGIN	Sprite		 x 39 y 0 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 3 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 6 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 9 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 0 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 3 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 6 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 9 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 6 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	BEGIN	Sprite		 x 39 y 9 w 3 h 3 RotateType 0
+		BEGIN Marker	 x 1.5 y 1.5 Index 0 END
+    END
+	Properties			 Scripted
+END
+
+
+BEGIN Equipment  
+    Name                 R4_Trowel    
+    Scale                0.800000  
+    AttackPower          1.00000
+	RechargeTime         1.00000
+    Properties           Tools
+    Properties           Metal
+    BEGIN	Sprite		 x 28 y 28 w 2 h 2 RotateType 0
+        BEGIN	Marker	 x 0.9 y 1.0 Index 0 END
+    END
+    Properties           NoImport
+END
+
+BEGIN Equipment
+	Name				 R4_Pruners
+	Scale				 0.800000
+	AttackPower			 5.00000
+	RechargeTime		 3.00000
+	Properties			 Tools
+	Properties			 Weapons
+	Properties			 Metal
+	BEGIN	Sprite		 x 30 y 28 w 2 h 2 RotateType 0
+		BEGIN	Marker	 x 0.9 y 1.0 Index 0 END
+	END
+    Properties           NoImport
+END
+
+BEGIN Equipment
+	Name				 R4_WateringCan
+	Scale				 1.000000
+	AttackPower			 1.00000
+	RechargeTime		 4.00000
+	Properties			 Tools
+	Properties			 Metal
+	BEGIN	Sprite		 x 32 y 28 w 2 h 2 RotateType 0
+		BEGIN	Marker	 x 0.9 y 1.0 Index 0 END
+	END
+    Properties           NoImport
+END
+
+BEGIN Equipment
+    Name				 R4_DDT
+    Scale				 0.800000  
+	BEGIN	Sprite		 x 0 y 16 w 2 h 2 RotateType 0 END
+    Properties			 Narcotics
+    Properties			 Smelly
+    Properties           NoImport
+END
+
+BEGIN Object     
+	Name				 R4_GardenTable
+	Width				 2
+	ConstructionTime	 0
+	Toughness			 10.0000
+	Price				 -50
+	Group				 StaticObject
+	BlockedBy			 Wall
+	Properties			 RoomSpecific
+	BlockedBy			 StaticObject
+	BlockedBy			 UtilityStation
+	WorkGroup			 R4_GardenGroup
+	MadeOf				 Wood
+	Properties			 StaticObject
+	NumSlots			 8
+	Properties			 Processor
+	BEGIN	Sprite		 x 28 y 22 w 4 h 2 RotateType 1 TopAligned false
+		BEGIN Marker	 x 1.016875 y 0.71875 orientation.x 0 orientation.y 0 Index 0 END
+		BEGIN Marker	 x 3.016875 y 0.71875 orientation.x 0 orientation.y 0 Index 1 END
+		BEGIN Marker	 x 1.026875 y 0.72875 orientation.x 0 orientation.y 0 Index 2 END
+		BEGIN Marker	 x 3.026875 y 0.72875 orientation.x 0 orientation.y 0 Index 3 END
+		BEGIN Marker	 x 1.036875 y 0.73875 orientation.x 0 orientation.y 0 Index 4 END
+		BEGIN Marker	 x 3.036875 y 0.73875 orientation.x 0 orientation.y 0 Index 5 END
+		BEGIN Marker	 x 1.046875 y 0.74875 orientation.x 0 orientation.y 0 Index 6 END
+		BEGIN Marker	 x 3.046875 y 0.74875 orientation.x 0 orientation.y 0 Index 7 END
+		
+		BEGIN Marker	 x 5.016875 y 0.71875 orientation.x 0 orientation.y -1 Index 0 END
+		BEGIN Marker	 x 7.016875 y 0.71875 orientation.x 0 orientation.y -1 Index 1 END
+		BEGIN Marker	 x 5.026875 y 0.72875 orientation.x 0 orientation.y -1 Index 2 END
+		BEGIN Marker	 x 7.026875 y 0.72875 orientation.x 0 orientation.y -1 Index 3 END
+		BEGIN Marker	 x 5.036875 y 0.73875 orientation.x 0 orientation.y -1 Index 4 END
+		BEGIN Marker	 x 7.036875 y 0.73875 orientation.x 0 orientation.y -1 Index 5 END
+		BEGIN Marker	 x 5.046875 y 0.74875 orientation.x 0 orientation.y -1 Index 6 END
+		BEGIN Marker	 x 7.046875 y 0.74875 orientation.x 0 orientation.y -1 Index 7 END
+		
+		BEGIN Marker	 x 9.015625 y -0.91875 orientation.x -1 orientation.y 0 Index 0 END
+		BEGIN Marker	 x 9.015625 y 0.41875 orientation.x -1 orientation.y 0 Index 1 END
+		BEGIN Marker	 x 9.025625 y -0.92875 orientation.x -1 orientation.y 0 Index 2 END
+		BEGIN Marker	 x 9.025625 y 0.42875 orientation.x -1 orientation.y 0 Index 3 END
+		BEGIN Marker	 x 9.035625 y -0.93875 orientation.x -1 orientation.y 0 Index 4 END
+		BEGIN Marker	 x 9.035625 y 0.43875 orientation.x -1 orientation.y 0 Index 5 END
+		BEGIN Marker	 x 9.045625 y -0.94875 orientation.x -1 orientation.y 0 Index 6 END
+		BEGIN Marker	 x 9.045625 y 0.44875 orientation.x -1 orientation.y 0 Index 7 END
+	END
+	ToolbarSprite		 StackWood
+	Filter				 Work
+END
+
+
+
+
+########################### ROOMS REGARDING GARDEN
+
+BEGIN Room
+    Name				 R4_Garden
+    Properties			 PrisonersCanWork
+    WorkGroup			 R4_GardenGroup
+    Qualification		 R4_BiologyClass
+    Qualification		 R4_PlantCultivation
+    Properties			 RequiresSector
+    BEGIN Requirement	 Type	 Outdoor	 END
+    BEGIN Requirement	 Type	 Object	 Id	 R4_GardenPot Alt R4_Shed2		 END
+    BEGIN Requirement	 Type	 Object	 Id	 R4_GardenControl Alt R4_Shed2	 END
+    BEGIN LikelyObject	 Id		 MetalDetector			 END
+    BEGIN LikelyObject	 Id		 R4_RecycleBin			 END
+    BEGIN LikelyObject	 Id		 R4_GardenTable			 END
+    BEGIN LikelyObject	 Id		 R4_Shed2				 END
+    BEGIN LikelyObject	 Id		 R4_GardenControlSpawner END
+    BEGIN LikelyObject	 Id		 R4_GardenBench			 END
+	BEGIN LikelyObject	 Id		 R4_TrashBin			 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotTomato		 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotCucumber	 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotRose		 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotLily		 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotIngredients END
+	BEGIN LikelyObject	 Id		 R4_GardenPotPotatoes	 END
+    BEGIN LikelyObject	 Id		 R4_ShedSpawner			 END
+	BEGIN LikelyObject	 Id		 VendingTreeApple		 END
+	BEGIN LikelyObject	 Id		 VendingTreeCherry		 END
+    BEGIN Contraband	 Id		 R4_DDT					 END
+    BEGIN Contraband	 Id		 R4_Trowel				 END
+    BEGIN Contraband	 Id		 R4_Pruners				 END
+    BEGIN Contraband	 Id		 R4_Wateringcan			 END
+END
+
+BEGIN Room
+    Name				 R4_Greenhouse
+    Properties			 PrisonersCanWork
+    WorkGroup			 R4_GardenGroup
+    Qualification		 R4_PlantCultivation
+    Qualification		 R4_BiologyClass
+    Properties			 RequiresSector
+    BEGIN Requirement	 Type	 Indoor		 END
+    BEGIN Requirement	 Type	 Object	 Id	 R4_GardenPot		 END
+    BEGIN Requirement	 Type	 Object	 Id	 R4_GardenControl	 END
+    BEGIN LikelyObject	 Id		 MetalDetector			 END
+    BEGIN LikelyObject	 Id		 R4_RecycleBin			 END
+    BEGIN LikelyObject	 Id		 R4_GardenTable			 END
+    BEGIN LikelyObject	 Id		 R4_GardenControlSpawner END
+    BEGIN LikelyObject	 Id		 R4_GardenBench			 END
+	BEGIN LikelyObject	 Id		 R4_TrashBin			 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotTomato		 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotCucumber	 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotRose		 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotLily		 END
+	BEGIN LikelyObject	 Id		 R4_GardenPotIngredients END
+	BEGIN LikelyObject	 Id		 R4_GardenPotPotatoes	 END
+    BEGIN Contraband	 Id		 R4_DDT					 END
+    BEGIN Contraband	 Id		 R4_Trowel				 END
+    BEGIN Contraband	 Id		 R4_Pruners				 END
+    BEGIN Contraband	 Id		 R4_Wateringcan			 END
+END
+
+
+
+
+########################### STAFF MEMBERS
+
+BEGIN Object     
+    Name                 R4_RecyclingWorker
+    Toughness            5.0000
+    Price                -500  
+	Upkeep				 -100
+    RenderDepth          3
+    ViewRange            3
+    BlockedBy            Wall  
+    BlockedBy            StaticObject  
+    BlockedBy            UtilityStation
+	BEGIN Sprite		 x 24 y 6 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 4 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 2 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 0 h 2 w 2 RotateType 1 END
+    SpriteVariants       4
+    Properties           Entity
+    Properties           Staff
+    Properties           StaffNeeds
+	Properties           DefaultBehaviour
+	HangOutRoom          R4_Recycling
+	WorkGroup			 R4_Recycling
+END
+
+BEGIN Object     
+    Name                 R4_GardenWorker
+    Toughness            5.0000
+    Price                -500  
+	Upkeep				 -100
+    RenderDepth          3
+    ViewRange            3
+    BlockedBy            Wall  
+    BlockedBy            StaticObject  
+    BlockedBy            UtilityStation
+	BEGIN Sprite		 x 24 y 0 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 2 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 4 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 6 h 2 w 2 RotateType 1 END
+    SpriteVariants       4
+    Properties           Entity
+    Properties           Staff
+    Properties           StaffNeeds
+	Properties           DefaultBehaviour
+	HangOutRoom          R4_Garden
+	WorkGroup			 R4_GardenGroup
+END
+
+BEGIN Object     
+    Name                 R4_GreenhouseWorker
+    Toughness            5.0000
+    Price                -500  
+	Upkeep				 -100
+    RenderDepth          3
+    ViewRange            3
+    BlockedBy            Wall  
+    BlockedBy            StaticObject  
+    BlockedBy            UtilityStation
+	BEGIN Sprite		 x 24 y 8 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 10 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 12 h 2 w 2 RotateType 1 END
+	BEGIN Sprite		 x 24 y 14 h 2 w 2 RotateType 1 END
+    SpriteVariants       4  
+    Properties           Entity
+    Properties           Staff
+    Properties           StaffNeeds
+	Properties           DefaultBehaviour
+	HangOutRoom          R4_Greenhouse
+	WorkGroup			 R4_GardenGroup
+END
+
+
+
+
+########################### FLOOR MATERIALS
+
+BEGIN Material   
+    Name                 LongGrass
+    ConstructionTime     0.00000
+    MoveCost             0.700000  
+    SoftEdged            1  
+    IndoorOutdoor        1  
+    ObjectRequired       GrassTurf  
+    SpriteType           RandomArea 
+    SpriteOverlayScale   4
+    NumSprites           2
+    BEGIN Sprite0    x 25  y 6  END
+    BEGIN Sprite1    x 5  y 2  END
+END
+
+BEGIN Material   
+    Name                 Mud
+    ConstructionTime     0.00000  
+    MoveCost             0.700000  
+    SoftEdged            1  
+    IndoorOutdoor        1  
+    ObjectRequired       GrassTurf  
+    SpriteType           RandomArea  
+    SpriteOverlayScale   4
+    NumSprites           2
+    BEGIN Sprite0    x 25  y 8  END
+    BEGIN Sprite1    x 5  y 2  END
+END

@@ -1,0 +1,415 @@
+﻿
+# # # # # # # # # # # # # # # # # # # # #
+#
+#  Recycling 4.0
+#
+# # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+########################### GARBAGE TYPES
+
+object_R4_UnsortedTrash							 Unsorted Trash (-> Trash Bin)
+tooltip_R4_UnsortedTrash						 \nUnsorted Trash goes to a Trash Bin which turns it into one big stack of Unsorted Garbage.\nThe Unsorted Garbage then goes to the Recycling room.\n\n-- [ ADVISED SETUP FOR THE AVERAGE PRISON ] --\n1 Trash Bin per Kitchen\n  (10, 20, 30 bags: small, medium, or large kitchen)\n1 Trash Bin in Recycling\n  (10-50 bags: depending on prison size)\n1 Trash Bin (10 bags) in areas like Garden & Cemetery\n1 Trash Compactor in Recycling room or Garbage area\n2 Recycling Desks in the Recycling room\n2 Recycle tables in Recycling room\n1 Recycle Bin per Garden or Greenhouse\n\nThis should be more than plenty to deal with the garbage in prisons up to 500 inmates. If you place more Trash Bins, then the garbage will be split over more objects, so it will take longer for each Trash Bin to fill up and get recycled. Trash Bins work like a buffer for your Recycling room.\n\nPlace as many default Bins from the game if you wish.\nThey are just eye-candy now and never collect Unsorted Trash.\n\nGarbage area only needs to hold the Trash Compactor and some walking space for idle Janitors.\nNo other garbage is stored there, so it can be a small room.
+
+object_R4_UnsortedGarbage						 Unsorted Garbage (-> Recycle Desk)
+tooltip_R4_UnsortedGarbage						 Unsorted Garbage goes to a Recycle Desk in the Recycling room to be sorted out.
+
+object_R4_SortedGarbage							 Sorted Garbage (-> Trash Compactor)
+tooltip_R4_SortedGarbage						 All the smelly bits of useless trash, sells for $0.\n\nSorted garbage comes from a Recycle Desk\nand goes to a Trash Compactor.
+
+object_R4_SortedGarbageExport					 Compact Garbage (-> Exports)
+tooltip_R4_SortedGarbageExport					 All the smelly bits of useless trash, sells for $1.
+
+object_R4_GreenGarbage							 Green Garbage (-> Recycle Bin)
+tooltip_R4_GreenGarbage							 All valuable bits of rotting waste, in a nice green bag.\nGets turned into Super Compost in a Recycle Bin.
+
+
+
+
+########################### GARBAGE PROCESSORS
+
+object_Bin										 Bin (Obsolete)
+buildtoolbar_popup_obj_Bin						 Just an eyecandy bin which does nothing.\nPlace the Trash Bins for handling garbage.
+
+object_R4_TrashBin								 Trash Bin
+buildtoolbar_popup_obj_R4_TrashBin				 For any room in your prison.\n\nUnsorted Trash gets stored in here:\n - Use my button to specify bags.\n - Up to 50 bags get stacked.\n - Turns into 1 bag of Unsorted Garbage.\n - Gets processed at the Recycling room.
+tooltip_R4_TrashBin								 Turns *M bags of Unsorted Trash\nto 1 stack of Unsorted Garbage for Recycling.\n\nSTATUS LED:\nRed - Empty\nYellow - Garbage queued\nFlashing - Busy compacting\nGreen - Ready to process\n\nGARBAGE IN QUEUE: *Q
+
+object_R4_RecycleBin							 Recycle Bin
+buildtoolbar_popup_obj_R4_RecycleBin			 Only for Garden and Greenhouse rooms.\n\nGreen Garbage gets stored in here:\n - Activate the Green Garbage at Recycle Desk.\n - Use my button to specify bags.\n - Up to 50 bags get stacked.\n - Turns into Super Compost for Garden Pots.
+
+tooltip_R4_RecycleBin							 Turns *M bags of Green Garbage\nto 1 stack of Super Compost for Garden Pots.\n\nSTATUS LED:\nRed - Empty\nYellow - Garbage queued\nFlashing - Busy compacting\nGreen - Ready to process\n\nGARBAGE IN QUEUE: *Q
+
+object_R4_TrashCompactor						 Trash Compactor
+buildtoolbar_popup_obj_R4_TrashCompactor		 For Garbage or Recycling room.\n\nSorted Garbage gets stored in here:\n - Use my button to specify bags.\n - Up to 100 bags get stacked.\n - Turns into 1 big bag for Exports.
+tooltip_R4_TrashCompactor						 Stacks *M bags of Sorted Garbage\nto 1 stack of Compact Garbage for Exports.\n\nSTATUS LED:\nRed - Empty\nYellow - Garbage queued\nFlashing - Busy compacting\nGreen - Ready to process\n\nGARBAGE IN QUEUE: *Q
+
+object_R4_RecycleDeskProcessor					 Recycle Desk (Processor)
+tooltip_R4_RecycleDeskProcessor					 Unsorted Garbage gets stored in here:\n - Use my buttons to determine what to find.\n - SpawnRate is interval between each item to spawn.\n - A higher number means less spawned items.
+
+object_R4_RecycleDeskVisible					 Recycle Desk
+buildtoolbar_popup_obj_R4_RecycleDeskVisible	 Used by Recycling Worker, Janitors, Gardeners, Workmen and Prisoners to sort rubbish into more valuable rubbish.\n\nShould also spawn a transparent Recycle Desk (Processor) to complete this object.\n\nUnsorted Garbage gets stored in here:\n - Use my buttons to determine what to find.\n - Returns found items to where they belong.\n - Makes Green Garbage for Recycle Bin.\n - Makes Sorted Garbage for Trash Compactor.\n - SpawnRate is interval between each item to spawn.\n - A higher number means less spawned items.
+
+tooltip_R4_button_MaxStackSize					 Max *X bags
+
+tooltip_R4_button_ToggleSpawn1					   *X  Green Garbage 
+tooltip_R4_button_ToggleSpawn2					   *X    Sheet Metal 
+tooltip_R4_button_ToggleSpawn3					   *X            Log 
+tooltip_R4_button_ToggleSpawn4					   *X           Wood 
+tooltip_R4_button_ToggleSpawn5					   *X   Library Books 
+tooltip_R4_button_ToggleSpawn6					   *X  License Plates 
+tooltip_R4_button_ToggleSpawn7					   *X Prisoner Uniforms 
+tooltip_R4_button_ToggleSpawn8					   *X Dirty FoodTrays 
+tooltip_R4_button_ToggleSpawn9					   *X Crumpled Uniforms 
+tooltip_R4_button_ToggleSpawn10					   *X     Shop Goods 
+tooltip_R4_button_ToggleSpawn11					   *X     Ingredients 
+tooltip_R4_button_ToggleSpawnRate				  Spawn every *X bags 
+tooltip_R4_button_Yes							 V
+tooltip_R4_button_No							 X
+
+object_R4_RecycleTable							 Recycle Table
+buildtoolbar_popup_obj_R4_RecycleTable			 This table stores Unsorted Garbage in the Recycling room.
+
+
+
+
+
+########################### ROOMS REGARDING RECYCLING
+
+room_Garbage									 Garbage
+buildtoolbar_popup_room_Garbage					 Where Sorted Garbage gets collected before it goes to Exports.\n\nPlace a Trash Compactor to press up to 100 bags of Sorted Garbage into 1 big bag for Exports. No other garbage is stored here, so this room can be small. Make sure this area is nearby Exports so walking time is minimal.
+
+room_R4_Recycling								 Recycling
+buildtoolbar_popup_room_R4_Recycling			 Where prisoners learn how to recycle garbage. Workmen, janitors and gardeners will also make use of this room. Beware: lot's of contraband can be found here!\n\n-- [ ADVISED SETUP FOR THE AVERAGE PRISON ] --\n1 Trash Bin per Kitchen\n  (10, 20, 30 bags: small, medium, or large kitchen)\n1 Trash Bin in Recycling\n  (10, 20 or 30 bags: depending on prison size)\n1 Trash Bin (10 bags) in areas like Garden & Cemetery\n1 Trash Compactor in Recycling room or Garbage area\n2 Recycling Desks in the Recycling room\n2 Small wooden tables in Recycling room\n1 Recycle Bin per Garden or Greenhouse\n\nThis should be more than plenty to deal with the garbage in prisons up to 500 inmates. If you place more Trash Bins, then the garbage will be split over more objects, so it will take longer for each Trash Bin to fill up and get recycled. Trash Bins work like a buffer for your Recycling room.\n\nPlace as many default Bins from the game if you wish.\nThey are just eye-candy now and never collect Unsorted Trash.\n\nGarbage area only needs to hold the Trash Compactor and some walking space for idle Janitors.\nNo other garbage is stored there, so it can be a small room.
+
+
+
+
+########################### RECYCLING REFORM
+
+reformprogram_R4_RecycleGarbage					 Basic Garbage Recycling
+reformprogram_R4_RecycleGarbage_text			 This reform program lets your prisoners dig through piles of stinking garbage in order to recycle useful bits and pieces.
+
+
+
+
+########################### RECYCLING GRANTS
+
+objective_grant_R4_Recycle						 Subsidised Recycling Initiative
+objective_grant_R4_Recycle_description			 In an effort to improve their image, investors are offering rewards for anyone willing to recycle their old goods. There’s always a market for old materials - all you have to do is take advantage of it.
+objective_grant_R4_Recycle_requirement1			 Set up a Recycling room
+objective_grant_R4_Recycle_requirement2			 Place 1 Recycling Desk
+objective_grant_R4_Recycle_requirement3			 Place 1 TrashBin
+objective_grant_R4_Recycle_requirement4			 Place 1 Trash Compactor
+
+
+
+
+
+# # # # # # # # # # # # # # # # # # # # #
+#
+#  Garden 4.0
+#
+# # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+########################### EYE CANDY
+
+object_R4_SmallGardenBench						 Wooden Garden Bench
+buildtoolbar_popup_obj_R4_SmallGardenBench		 A small wooden garden bench.
+
+object_R4_FenceBush								 Fence Bush
+object_R4_FoliagePlantA							 Plant
+object_R4_FoliagePlantB							 Plant
+object_R4_FoliagePlantC							 Plant
+object_R4_FoliagePlantD							 Plant
+object_R4_FoliagePlantE							 Plant
+object_R4_FoliagePlantF							 Plant
+object_R4_FoliagePlantG							 Plant
+object_R4_FoliagePlantH							 Plant
+object_R4_FoliagePlantI							 Plant
+object_R4_FoliagePlantJ							 Plant
+object_R4_FoliagePlantK							 Plant
+object_R4_FoliagePlantL							 Plant
+object_R4_FlowersA								 Flowers
+object_R4_FlowersB								 Flowers
+object_R4_FlowersC								 Flowers
+object_R4_FlowersD								 Flowers
+object_R4_FlowersE								 Flowers
+object_R4_FlowersShared							 White flowers
+object_R4_FlowersMinsec							 Blue flowers
+object_R4_FlowersMedsec							 Orange flowers
+object_R4_FlowersMaxsec							 Red flowers
+object_R4_FlowersPrsec							 Yellow flowers
+object_R4_Bush1									 Bush
+object_R4_Bush2									 Bush
+object_R4_Bush3									 Bush
+object_R4_SmallBush3							 Bush
+object_R4_Bush4									 Bush
+object_R4_Bush5									 Bush
+object_R4_Bush6									 Bush
+object_R4_Bush7									 Bush
+object_R4_Bush8									 Bush
+object_R4_Bush9									 Bush
+object_R4_Buxus									 Buxus
+object_R4_SmallBuxus							 Small Buxus
+object_R4_FlowerPot								 Mixed flowers
+object_R4_FlowerPot1							 Mixed flowers
+object_R4_FlowerPot2							 Mixed flowers
+object_R4_FlowerPot3							 Mixed flowers
+object_R4_FlowerPot4							 Mixed flowers
+object_R4_FlowerPot5							 Flower Pot
+object_R4_FlowerPot6							 Flower Pot
+object_R4_Tulips1								 Tulips
+object_R4_Tulips2								 Tulips
+object_R4_Tulips3								 Tulips
+object_R4_Tulips4								 Tulips
+object_R4_BeeHive								 Bee Hive
+object_R4_Hedge1								 Hedge
+object_R4_Hedge2								 Hedge
+object_R4_Hedge3								 Hedge
+object_R4_Hedge4								 Hedge
+
+
+
+########################### TREES (taken from Vending Machines 2.0)
+
+object_VendingApple								 Apple
+object_VendingTreeFruitApple					 Apple
+object_VendingTreeFruitRottenApple				 Rotten Apple
+object_VendingTreeApple							 Apple Tree
+buildtoolbar_popup_obj_VendingTreeApple			 Place Apple Trees to export fresh apples from your prison
+
+
+object_VendingCherry							 Cherry
+object_VendingTreeFruitCherry					 Cherry
+object_VendingTreeFruitRottenCherry				 Rotten Cherry
+object_VendingTreeCherry						 Cherry Tree
+buildtoolbar_popup_obj_VendingTreeCherry		 Place Cherry Trees to export fresh cherries from your prison
+
+tooltip_R4_VendingTreeStage1					 Stage 1/5:\nStill a tiny blossom...
+tooltip_R4_VendingTreeStage2					 Stage 2/5:\nA flower with a lovely smell...
+tooltip_R4_VendingTreeStage3					 Stage 3/5:\nVery sour, needs a lot of sunshine...
+tooltip_R4_VendingTreeStage4					 Stage 4/5:\nAbout ripe, a bit more sunshine...
+tooltip_R4_VendingTreeStage5					 Stage 5/5:\nThis fruit is ready to be harvested
+tooltip_R4_VendingTree							 This *F tree grows in 5 stages. Be patient...
+tooltip_R4_VendingTreeTending					 This *F Tree needs some tending...
+job_custom_R4_TendVendingTree					 Tend Tree
+
+
+
+
+
+########################### GARDEN / GREENHOUSE OBJECTS
+
+object_R4_SuperCompost							 Super Compost
+tooltip_R4_SuperCompost							 This fresh compost will let your Garden Pots grow much faster and double the harvest amount, but ONLY when HarvestHour is disabled.
+
+object_R4_GardenSeed							 Garden Seed
+object_R4_GardenCompost							 Garden Compost
+object_R4_GardenFertilizer						 Garden Fertilizer
+object_R4_GardenDDT								 Garden DDT
+
+object_R4_GreenhouseSeed						 Greenhouse Seed
+object_R4_GreenhouseCompost						 Greenhouse Compost
+object_R4_GreenhouseFertilizer					 Greenhouse Fertilizer
+object_R4_GreenhouseDDT							 Greenhouse DDT
+
+equipment_R4_DDTSprayer							 DDT Sprayer
+
+object_R4_GardenTomato							 Tomato
+object_R4_GardenCucumber						 Cucumber
+object_R4_GardenRose							 Rose
+object_R4_GardenLily							 Lily
+
+object_R4_GardenPot								 Garden Pot
+tooltip_R4_need_GardenControl					 This Garden Pot needs a Garden Control before it can grow smelly things. The Garden Control has to be placed within 29 tiles of this pot.\n\nPress the " FIND NEW POTS " button on the Garden Control to enable this pot.
+tooltip_R4_PlantSeed							 \nControl ID: *X\n\nA new seed will soon be planted
+tooltip_R4_PlantStatus							 \nControl ID: *X\n\nType: *A\n\nFAST GROW: *L\n\nAge: *B hours *C minutes\nHarvest Hour: *D\n\nNeeds tending: *E\nNeeds water: *F\nNeeds DDT: *G\nNeeds fertilizer: *H\nNeeds pruning: *I\n\nReady to harvest: *J\nRemaining harvest: *Kx
+
+object_R4_GardenPotTomato						 Garden Pot (Tomato)
+object_R4_GardenPotCucumber						 Garden Pot (Cucumber)
+object_R4_GardenPotRose							 Garden Pot (Rose)
+object_R4_GardenPotLily							 Garden Pot (Lily)
+object_R4_GardenPotIngredients					 Garden Pot (Ingredients)
+object_R4_GardenPotPotatoes						 Garden Pot (Potatoes)
+
+buildtoolbar_popup_obj_R4_GardenPotRose			 This Garden Pot will grow\na random amount of Roses\n\nRequires a Garden Control within 29 tiles.\n\nThe Garden Control in your Garden or Greenhouse will control the harvest.\n\nPress the " FIND NEW POTS " button on the Garden Control to enable this pot.
+buildtoolbar_popup_obj_R4_GardenPotLily			 This Garden Pot will grow\na random amount of Lilies\n\nRequires a Garden Control within 29 tiles.\n\nThe Garden Control in your Garden or Greenhouse will control the harvest.\n\nPress the " FIND NEW POTS " button on the Garden Control to enable this pot.
+buildtoolbar_popup_obj_R4_GardenPotTomato		 This Garden Pot will grow\na random amount of Tomatoes\n\nRequires a Garden Control within 29 tiles.\n\nThe Garden Control in your Garden or Greenhouse will control the harvest.\n\nPress the " FIND NEW POTS " button on the Garden Control to enable this pot.
+buildtoolbar_popup_obj_R4_GardenPotCucumber		 This Garden Pot will grow\na random amount of Cucumber\n\nRequires a Garden Control within 29 tiles.\n\nThe Garden Control in your Garden or Greenhouse will control the harvest.\n\nPress the " FIND NEW POTS " button on the Garden Control to enable this pot.
+buildtoolbar_popup_obj_R4_GardenPotIngredients	 This Garden Pot will grow\na stack of 20 Ingredients\n\nRequires a Garden Control within 29 tiles.\n\nThe Garden Control in your Garden or Greenhouse will control the harvest.\n\nPress the " FIND NEW POTS " button on the Garden Control to enable this pot.\n\nNote:\nGrowing your own food will NOT reduce the cost for prisoner food.
+buildtoolbar_popup_obj_R4_GardenPotPotatoes		 This Garden Pot will grow\na stack of 20 Potatoes\n\nRequires a Garden Control within 29 tiles.\n\nThe Garden Control in your Garden or Greenhouse will control the harvest.\n\nPress the " FIND NEW POTS " button on the Garden Control to enable this pot.\n\nNote:\nGrowing your own food will NOT reduce the cost for prisoner food.
+
+object_R4_GardenAreaCovered						 Covered Plants Area
+tooltip_R4_CoveredPlantArea						 Covered Plants Area
+
+object_R4_GardenControl							 Garden Control
+object_R4_GardenControlSpawner					 Garden Control
+buildtoolbar_popup_obj_R4_GardenControlSpawner	 Place this Control unit in the centre of your Garden.\n\nPress " FIND NEW POTS " to scan for Garden Pots within a range of 3-29 square tiles.\n\nYou can place several control units in one Garden, all managing their own little batch of Garden Pots placed around them.\n\nUse my buttons to configure harvest times and range.\n\nDefault random harvest:\n -do nothing, remote plants will grow for 24 hours\n -age gets reset once a harvest job is completed\n -this will result in random harvest times\n\nTo control harvest by HarvestHour:\n -press the buttons to change the hour\n -when hour is set to 0:00 then it's disabled\n\nTo control harvest by DoorTimer:\n -connect DoorTimer -> Garden Control\n -can be done several times per day\n -set an 'Open' hour to activate a harvest job\n -set 'Closed' hour(s) in between job(s)
+tooltip_R4_GardenPotNotManaged					 WARNING: no Garden Control found\n\nThis Garden Pot requires a Garden Control within 3 to 29 tiles.\n\nThe Garden Control in your garden will control the harvest.
+tooltip_R4_button_ScanArea						 FIND NEW POTS
+tooltip_R4_button_ChangeRangePlus				 Range (+)
+tooltip_R4_button_ShowHideRange					 Show/Hide: *Xm²
+tooltip_R4_button_ChangeRangeMinus				 Range (-)
+tooltip_R4_button_PlantType						 Type: *X
+tooltip_R4_button_GardenTomato					 Tomato
+tooltip_R4_button_GardenCucumber				 Cucumber
+tooltip_R4_button_GardenRose					 Rose
+tooltip_R4_button_GardenLily					 Lily
+tooltip_R4_button_Ingredients					 Ingredients
+tooltip_R4_button_Potatoes						 Potatoes
+tooltip_R4_button_Random						 Random
+tooltip_R4_button_RemoveStack					 Remove Stack
+tooltip_R4_button_ToggleLights					 Light: *X
+tooltip_R4_button_On							 On
+tooltip_R4_button_Night							 Night
+tooltip_R4_button_Off							 Off
+tooltip_R4_button_NeedsYes						 YES
+tooltip_R4_button_NeedsNo						 no
+tooltip_R4_SeparatorWeather						 = WEATHER EVENT =
+tooltip_R4_button_ToggleLightning				 Lightning: *X
+tooltip_R4_PlantControl							 \nControl ID: *X\n\nHarvest Hour is at: *A\n\nFound *B plants to manage in *C tiles range\n\nSuper Compost available: *D\nGets produced by Recycle Bins.\nEnables faster grow time and production x2.\n\nTooltips and jobs are updated every 15 minutes.\n\nMost jobs are issued between 8am and 22pm,\nand some can continue through the night.
+tooltip_R4_PlantControlLightning				 \nControl ID: *X\n\nWARNING:\nA plant was struck by lightning!
+tooltip_R4_PlantStruck							 Struck by lightning!\nThis plant is dead and will be replaced soon
+tooltip_R4_PlantDead							 This plant is dead and will be replaced soon
+tooltip_R4_FastGrowYes							 YES\n...but ONLY if Harvest Hour ìs disabled
+tooltip_R4_FastGrowNo							 place a Recycle Bin and\nmake Green Garbage at Recycle Desk
+
+
+object_R4_Shed2									 Garden Shed
+object_R4_ShedSpawner							 Garden Shed
+buildtoolbar_popup_obj_R4_ShedSpawner			 This Shed will produce fresh eggs and bacon for your kitchen every day. Press my buttons to change the amount and hour.\n\nTo control delivery by DoorTimer:\n -connect DoorTimer -> Shed\n -set an 'Open' hour to activate a delivery job\n -set 'Closed' hour(s) in between job(s)\n\nNote:\nGrowing your own food will NOT reduce the cost for prisoner food.
+tooltip_R4_StatusShed							 \nEggs: *A\nBacon: *B\n\nAge: *C hours *D minutes\n\nHarvest Hour: *E\nClick my buttons to change, or use DoorTimer
+tooltip_R4_StatusShedNotForced					 \nEggs: *A\nBacon: *B\n\nAge: *C hours *D minutes (Harvest at 24 hours)\n\nHarvest hour is disabled\nClick my buttons to change, or use DoorTimer
+tooltip_R4_StatusShedHarvest					 \nEggs: *A\nBacon: *B\n\nAge: *C hours *D minutes\n\nHarvest Hour: *E\nClick my buttons to change, or use DoorTimer\n\nHarvest was issued by Harvest Hour
+tooltip_R4_StatusShedDoorTimer					 \nEggs: *A\nBacon: *B\n\nAge: *C hours *D minutes\n\nHarvest Hour: *E\nClick my buttons to change, or use DoorTimer\n\nHarvest was issued by DoorTimer\nWaiting for power off, or maximum age...
+tooltip_R4_button_Delete						 Delete
+tooltip_R4_button_ToggleEggs					 Eggs amount: *X
+tooltip_R4_button_ToggleBacon					 Bacon amount: *X
+tooltip_R4_SeparatorLine						 ==============
+tooltip_R4_button_HarvestHourPlus				 Hour (+)
+tooltip_R4_button_HarvestHourMinus				 Hour (-)
+tooltip_R4_button_HarvestHour					 Harvest: *X
+
+object_R4_GardenPrunedPlant						 Pruned Plant
+object_R4_GardenPlantStruck						 Struck Plant
+object_R4_GardenDeadPlant						 Dead Plant
+object_R4_LightningStrike						 Lightning Strike
+
+equipment_R4_Trowel								 Trowel
+equipment_R4_Pruners							 Pruners
+equipment_R4_Wateringcan						 Watering Can
+equipment_R4_DDT								 DDT
+
+object_R4_GardenTable							 Wooden Garden Table
+buildtoolbar_popup_obj_R4_GardenTable			 This table stores products produced by the Trees & Garden Pots in the Garden or the Greenhouse.
+
+
+
+
+########################### ROOMS REGARDING GARDEN
+
+room_R4_Garden									 Garden
+buildtoolbar_popup_room_R4_Garden				 Where prisoners grow Cabbage/Potatoes for the Kitchen and flowers for Exports. Also the place where Green Garbage will given back to Mother Nature. A Garden can only be outdoors.
+
+room_R4_Greenhouse								 Greenhouse
+buildtoolbar_popup_room_R4_Greenhouse			 Where prisoners grow Cabbage/Potatoes for the Kitchen and flowers for Exports. Also the place where Green Garbage will given back to Mother Nature. A Greenhouse can only be indoors.
+
+object_R4_GardenControlSpawner5					 Prefab Garden Control Spawner
+quickbuild_Garden5x5							 Garden (5x5)
+object_R4_GardenControlSpawner7					 Prefab Garden Control Spawner
+quickbuild_Garden7x7							 Garden (7x7)
+quickbuild_Greenhouse5x5						 Greenhouse (5x5)
+quickbuild_Greenhouse7x7						 Greenhouse (7x7)
+
+
+########################### STAFF MEMBERS
+
+object_R4_RecyclingWorker						 Recycling Worker
+buildtoolbar_popup_staff_R4_GardenWorker		 This staff member works in a Recycling room.
+object_R4_GardenWorker							 Garden Worker
+buildtoolbar_popup_staff_R4_GardenWorker		 This staff member works in a Garden.
+object_R4_GreenhouseWorker						 Greenhouse Worker
+buildtoolbar_popup_staff_R4_GreenhouseWorker	 This staff member works in a Greenhouse.
+
+
+
+
+########################### FLOOR MATERIALS
+
+material_Mud									 Mud
+material_LongGrass								 Long Grass
+
+
+
+
+########################### GARDEN REFORM
+
+reformprogram_R4_PlantCultivation				 Plant Cultivation
+reformprogram_R4_PlantCultivation_text			 This reform program will teach your inmates to grow food and flowers in a Garden. When successful they can work there as well.
+
+reformprogram_R4_BiologyClass					 Botany
+reformprogram_R4_BiologyClass_text				 This reform program will teach your inmates botany in a classroom. When successful they can work in a Greenhouse.
+
+
+
+
+########################### GARDEN GRANTS
+
+objective_Grant_R4_Garden						 Garden
+objective_Grant_R4_Garden_description			 Let your prisoners dig in the soil and come closer to Nature
+objective_Grant_R4_Garden_GardenRoom			 Build a Garden
+objective_Grant_R4_Garden_GardenControlNumber	 Place 1 Garden Control in the centre
+objective_Grant_R4_Garden_GardenPotNumber		 Place 8 GardenPots around the Garden Control
+
+objective_Grant_R4_Garden_Production			 Garden Production
+objective_Grant_R4_Garden_Production_description Harvest various types of plants in your Garden. For this grant to complete, all plants must be harvested at once.
+objective_Grant_R4_Garden_Production_Research	 First you must complete the Garden grant
+objective_Grant_R4_Garden_Production_Passed		 Have 5 prisoners pass the Plant Cultivation reform program
+objective_Grant_R4_Garden_Production_Assigned	 Assign 2 prisoners to work at the Garden
+objective_Grant_R4_Garden_Production_Tomato		 Harvest 11 Tomatoes
+objective_Grant_R4_Garden_Production_Cucumber	 Harvest 11 Cucumber
+objective_Grant_R4_Garden_Production_Rose		 Harvest 11 Roses
+objective_Grant_R4_Garden_Production_Lily		 Harvest 11 Lilies
+
+
+
+
+########################### GARDEN JOBS
+
+job_custom_R4_TendGardenPlant					 Tend garden plant
+job_custom_R4_PlantGardenSeed					 Plant garden seeds
+job_custom_R4_HarvestGardenPlant				 Harvest garden plant
+job_custom_R4_FertilizeGardenPlant				 Fertilize garden plant
+job_custom_R4_WaterGardenPlant					 Water garden plant
+job_custom_R4_RemoveDeadGardenPlant				 Remove dead garden plant
+job_custom_R4_PruneGardenPlant					 Prune garden plant
+job_custom_R4_DDTGardenPlant					 Spray DDT on garden plant
+job_custom_R4_RemoveStruckGardenPlant			 Remove struck garden plant
+
+job_custom_R4_TendGreenhousePlant				 Tend greenhouse plant
+job_custom_R4_PlantGreenhouseSeed				 Plant greenhouse seeds
+job_custom_R4_HarvestGreenhousePlant			 Harvest greenhouse plant
+job_custom_R4_FertilizeGreenhousePlant			 Fertilize greenhouse plant
+job_custom_R4_WaterGreenhousePlant				 Water greenhouse plant
+job_custom_R4_RemoveDeadGreenhousePlant			 Remove dead greenhouse plant
+job_custom_R4_PruneGreenhousePlant				 Prune greenhouse plant
+job_custom_R4_DDTGreenhousePlant				 Spray DDT on greenhouse plant
+
+job_custom_R4_SuperTendGardenPlant				 Treat plant with Super Compost
+
+job_custom_R4_JustARecyclingDummyJob			 Just a dummy job
+
+
+
+
+########################### From Manufactury 4.0 mod
+
+object_M4_CottonPrunedPlant						 Pruned Plant
+object_M4_CottonDeadPlant						 Dead Plant
+object_M4_CottonPlantStruck						 Struck Plant

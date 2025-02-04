@@ -1,0 +1,20 @@
+
+BEGIN Provider
+	Action	        Sit
+	ProviderType	Object
+	Object	        R4_SmallGardenBench
+	Slot	        0
+	PrimaryNeed	    Comfort
+	PrimaryRate	    -0.300000
+	ActionType	    Use
+END
+
+BEGIN Provider
+	Action	        Sit
+	ProviderType	Object
+	Object	        R4_SmallGardenBench
+	Slot	        1
+	PrimaryNeed	    Comfort
+	PrimaryRate	    -0.300000
+	ActionType	    Use
+END

@@ -1,0 +1,55 @@
+
+BEGIN Program
+	Name			 		 R4_RecycleGarbage
+	SessionCost		 		 -100
+	Places			 		 20
+	SessionLength	 		 60
+	NumSessions		 		 1
+	Difficulty		 		 10
+	Room			 		 R4_Recycling
+	Teacher			 		 R4_RecyclingWorker
+	Intake			 		 Voluntary
+	Properties		 		 Practical
+	Research				 PrisonLabour
+END
+
+
+#######################################################
+#
+#  Begin Simple Garden Mod by Elfylia
+#
+#######################################################
+
+BEGIN Program
+	Name					 R4_PlantCultivation
+	SessionCost				 -100
+	Places					 50
+	SessionLength			 60
+	NumSessions				 1
+	Difficulty				 10
+	Research				 PrisonLabour
+	Room					 R4_Garden
+	Teacher					 R4_GardenWorker
+	Intake					 Voluntary
+	Properties				 Practical
+END
+
+BEGIN Program
+	Name					 R4_BiologyClass
+	SessionCost				 -200
+	Places					 50
+	SessionLength			 60
+	NumSessions				 1
+	Difficulty				 40
+	Research				 PrisonLabour
+	Room					 R4_Greenhouse
+	Teacher					 R4_GreenhouseWorker
+	Intake					 Voluntary
+	Properties				 Practical
+END
+
+#######################################################
+#
+#  End Simple Garden Mod by Elfylia
+#
+#######################################################

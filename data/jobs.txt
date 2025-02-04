@@ -1,0 +1,251 @@
+
+
+
+#######################################################
+#
+#  Begin Recycling
+#
+#######################################################
+
+BEGIN Job
+    Name			 R4_JustARecyclingDummyJob
+    JobTime			 0
+	Properties		 HighPriority
+    Tool			 Clipboard
+    Qualification	 R4_RecycleGarbage
+	WorkGroup		 R4_Recycling
+	Worker			 R4_RecyclingWorker
+	Worker			 Prisoner
+	Worker			 Janitor
+	Worker			 Cook
+	Worker			 R4_GardenWorker
+    Worker			 R4_GreenhouseWorker
+END
+
+#######################################################
+#
+#  Begin Simple Garden Mod by Elfylia
+#
+#######################################################
+
+BEGIN Job
+    Name			 R4_PlantGardenSeed
+    JobTime			 2
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Material		 R4_GardenSeed
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_TendGardenPlant
+    JobTime			 3
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Material		 R4_GardenCompost
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_SuperTendGardenPlant
+    JobTime			 3
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Worker			 R4_GreenhouseWorker
+    Material		 R4_SuperCompost
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_WaterGardenPlant
+    JobTime			 2
+    Tool			 R4_WateringCan
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_FertilizeGardenPlant
+    JobTime			 2
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Material		 R4_GardenFertilizer
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_DDTGardenPlant
+    JobTime			 2
+    Tool			 R4_DDTSprayer
+    Material		 R4_GardenDDT
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_PruneGardenPlant
+    JobTime			 2
+    Tool			 R4_Pruners
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_HarvestGardenPlant
+    JobTime			 3
+	Properties		 HighPriority
+    Tool			 R4_Pruners
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_RemoveDeadGardenPlant
+    JobTime			 2
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+	Worker			 R4_GardenWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_RemoveStruckGardenPlant
+    JobTime			 1
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+    Worker			 R4_GardenWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_PlantGreenhouseSeed
+    JobTime			 2
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+    Worker			 R4_GreenhouseWorker
+    Material		 R4_GreenhouseSeed
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_TendGreenhousePlant
+    JobTime			 3
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+    Worker			 R4_GreenhouseWorker
+    Material		 R4_GreenhouseCompost
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_WaterGreenhousePlant
+    JobTime			 2
+    Tool			 R4_WateringCan
+    Worker			 Prisoner
+    Worker			 R4_GreenhouseWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_FertilizeGreenhousePlant
+    JobTime			 2
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+    Worker			 R4_GreenhouseWorker
+    Material		 R4_GreenhouseFertilizer
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_DDTGreenhousePlant
+    JobTime			 2
+    Tool			 R4_DDTSprayer
+    Material		 R4_GreenhouseDDT
+    Worker			 Prisoner
+    Worker			 R4_GreenhouseWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_PruneGreenhousePlant
+    JobTime			 2
+    Tool			 R4_Pruners
+    Worker			 Prisoner
+    Worker			 R4_GreenhouseWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_HarvestGreenhousePlant
+    JobTime			 3
+	Properties		 HighPriority
+    Tool			 R4_Pruners
+    Worker			 Prisoner
+    Worker			 R4_GreenhouseWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_RemoveDeadGreenhousePlant
+    JobTime			 2
+    Tool			 R4_Trowel
+    Worker			 Prisoner
+    Worker			 R4_GreenhouseWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END
+
+BEGIN Job
+    Name			 R4_TendVendingTree
+    JobTime			 20
+    Tool			 R4_Pruners
+    Worker			 Prisoner
+    Worker			 Gardener
+	Worker			 R4_GardenWorker
+    Qualification	 R4_BiologyClass
+    Qualification	 R4_PlantCultivation
+	WorkGroup		 R4_GardenGroup
+END

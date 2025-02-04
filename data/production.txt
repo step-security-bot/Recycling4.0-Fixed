@@ -1,0 +1,693 @@
+
+#######################################################
+#
+#  Begin Recycling 4.0
+#
+#######################################################
+
+# preprocessed garbage
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_UnsortedTrash
+	Distribution		 Nearest
+	Container			 R4_TrashBin
+	MinSlotId			 0
+	MaxSlotId			 7
+    Properties           HighPriority
+	Condition			 NotLoaded
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Cook
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+
+# unsorted garbage coming from TrashBin gets processed
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_UnsortedGarbage
+	Room				 R4_Recycling
+	Container			 R4_RecycleDeskProcessor
+	Distribution		 NonCompeting
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_UnsortedGarbage
+	Room				 R4_Recycling
+	Container			 R4_RecycleDeskProcessor
+    Distribution         OutOfStock
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_UnsortedGarbage
+	Container			 R4_RecycleTable
+	Room				 R4_Recycling
+	Distribution		 Nearest
+	MinSlotId			 4
+	MaxSlotId			 5
+    Condition			 NotLoadedOnTable
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_UnsortedGarbage
+	Container			 Table
+	Room				 R4_Recycling
+	Distribution		 Nearest
+	MinSlotId			 0
+	MaxSlotId			 3
+    Condition			 NotLoadedOnTable
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+
+# sorted garbage goes to compactor
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_SortedGarbage
+	Distribution		 NonCompeting
+	Container			 R4_TrashCompactor
+	MinSlotId			 0
+	MaxSlotId			 7
+    Properties           HighPriority
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_SortedGarbageExport
+	Room				 Exports
+	Distribution		 Random
+    Properties           HighPriority
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+
+# green garbage goes to garden or greenhouse
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenGarbage
+	Container			 R4_RecycleBin
+	MinSlotId			 0
+	MaxSlotId			 7
+	Distribution		 NonCompeting
+    Properties           HighPriority
+	Condition			 NotLoaded
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenGarbage
+	Container			 R4_RecycleBin
+	MinSlotId			 0
+	MaxSlotId			 7
+    Distribution         OutOfStock
+    Properties           HighPriority
+	Condition			 NotLoaded
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenGarbage
+	Room				 Exports
+	Distribution		 Random
+	Condition			 NotLoaded
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+
+# various garbage processors
+
+BEGIN Processor
+	Processor			 R4_RecycleDeskProcessor
+	Input				 R4_UnsortedGarbage
+	InputCount			 1
+	Output				 R4_SortedGarbage
+	OutputCount			 1
+    AlternateOutput      R4_GreenGarbage
+    AlternateOutputCount 1
+    AlternateOutputChance 0.1
+	Object				 R4_RecycleDeskProcessor
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Qualification		 R4_RecycleGarbage
+	OperatingTime		 3.0
+	Properties			 ShowDuringOperation
+END
+
+BEGIN Processor
+	Processor			 R4_RecycleTable
+	Input				 None
+	Output				 None
+	OperatingTime		 0
+	Worker				 R4_RecyclingWorker
+	Worker				 Prisoner
+	Worker				 Gardener
+	Worker				 Workman
+	Worker				 Janitor
+	Qualification		 R4_RecycleGarbage
+END
+
+#######################################################
+#
+#  Begin Simple Garden Mod by Elfylia
+#
+#######################################################
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_SuperCompost
+	Container			 R4_GardenControl
+	Distribution		 OutOfStock
+	MinSlotId			 4
+	MaxSlotId			 4
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_SuperCompost
+	Container			 R4_GardenControl
+	Distribution		 NonCompeting
+	MinSlotId			 4
+	MaxSlotId			 4
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenCompost
+	Container			 R4_GardenControl
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 1
+	MaxSlotId			 1
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenhouseCompost
+	Container			 R4_GardenControl
+	Room				 R4_Greenhouse
+	Distribution		 Nearest
+	MinSlotId			 1
+	MaxSlotId			 1
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenCompost
+	Room				 R4_Garden
+	Distribution		 Nearest
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenhouseCompost
+	Room				 R4_Greenhouse
+	Distribution		 Nearest
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenSeed
+	Container			 R4_GardenControl
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 0
+	MaxSlotId			 0
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenSeed
+	Room				 R4_Garden
+	Distribution		 Random
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenhouseSeed
+	Container			 R4_GardenControl
+	Room				 R4_Greenhouse
+	Distribution		 Nearest
+	MinSlotId			 0
+	MaxSlotId			 0
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenhouseSeed
+	Room				 R4_Greenhouse
+	Distribution		 Random
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenFertilizer
+	Container			 R4_GardenControl
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 2
+	MaxSlotId			 2
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenFertilizer
+	Room				 R4_Garden
+	Distribution		 Random
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenhouseFertilizer
+	Container			 R4_GardenControl
+	Room				 R4_Greenhouse
+	Distribution		 Nearest
+	MinSlotId			 2
+	MaxSlotId			 2
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenhouseFertilizer
+	Room				 R4_Greenhouse
+	Distribution		 Random
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenDDT
+	Container			 R4_GardenControl
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 3
+	MaxSlotId			 3
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenDDT
+	Room				 R4_Garden
+	Distribution		 Random
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenhouseDDT
+	Container			 R4_GardenControl
+	Room				 R4_Greenhouse
+	Distribution		 Nearest
+	MinSlotId			 3
+	MaxSlotId			 3
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GreenhouseDDT
+	Room				 R4_Greenhouse
+	Distribution		 Random
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenTomato
+	Container			 R4_GardenTable
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 3
+	MaxSlotId			 3
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenTomato
+	Room				 Exports
+	Distribution		 Random
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenCucumber
+	Container			 R4_GardenTable
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 4
+	MaxSlotId			 4
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenCucumber
+	Container			 R4_GardenTable
+	Room				 R4_Greenhouse
+	Distribution		 Nearest
+	MinSlotId			 4
+	MaxSlotId			 4
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenCucumber
+	Room				 Exports
+	Distribution		 Random
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenRose
+	Container			 R4_GardenTable
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 5
+	MaxSlotId			 5
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenRose
+	Container			 R4_GardenTable
+	Room				 R4_Greenhouse
+	Distribution		 Nearest
+	MinSlotId			 5
+	MaxSlotId			 5
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenRose
+	Room				 Exports
+	Distribution		 Random
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenLily
+	Container			 R4_GardenTable
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 6
+	MaxSlotId			 6
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenLily
+	Container			 R4_GardenTable
+	Room				 R4_Greenhouse
+	Distribution		 Nearest
+	MinSlotId			 6
+	MaxSlotId			 6
+	Condition			 NotLoaded
+	Worker				 Prisoner
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenLily
+	Room				 Exports
+	Distribution		 Random
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 VendingApple
+	Container			 R4_GardenTable
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 7
+	MaxSlotId			 7
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+	Worker				 VendingManager
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 VendingApple
+	Room				 Exports
+	Distribution		 Random
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+	Worker				 VendingManager
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 VendingCherry
+	Container			 R4_GardenTable
+	Room				 R4_Garden
+	Distribution		 Nearest
+	MinSlotId			 6
+	MaxSlotId			 6
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+	Worker				 VendingManager
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 VendingCherry
+	Room				 Exports
+	Distribution		 Random
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+	Worker				 VendingManager
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenPrunedPlant
+	Container			 R4_RecycleBin
+	MinSlotId			 0
+	MaxSlotId			 7
+	Distribution		 Nearest
+    Properties           HighPriority
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenDeadPlant
+	Container			 R4_RecycleBin
+	MinSlotId			 0
+	MaxSlotId			 7
+	Distribution		 Nearest
+    Properties           HighPriority
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN ProductionRule
+	Rule				 Storage
+	Material			 R4_GardenPlantStruck
+	Container			 R4_RecycleBin
+	MinSlotId			 0
+	MaxSlotId			 7
+	Distribution		 Nearest
+    Properties           HighPriority
+	Condition			 NotLoaded
+	Worker				 Prisoner
+	Worker				 Workman
+	Worker				 Janitor
+	Worker				 Gardener
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+END
+
+BEGIN Processor
+	Processor			 R4_GardenTable
+	Input				 None
+	Output				 None
+	OperatingTime		 0
+	Worker				 Prisoner
+	Worker				 R4_GardenWorker
+    Worker				 R4_GreenhouseWorker
+	Worker				 Gardener
+	Worker				 Workman
+	Worker				 Janitor
+END
+
+
+#######################################################
+#
+#  End Simple Garden Mod by Elfylia
+#
+#######################################################
