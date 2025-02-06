@@ -85,15 +85,17 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
 
-      - name: Mark Notification as Read
-        if: github.actor == 'Nick2bad4u' && env.PR_NUMBER != ''
+      - name: Debug Notification API Response
+        if: github.actor == 'Nick2bad4u'
         run: |
           pr_id="${{ env.PR_NUMBER }}"
-          notification_id=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/notifications | jq -r ".[] | select(.subject.url | contains(\"pulls/$pr_id\")) | .id")
+          response=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/notifications)
+          echo "API Response: $response"
+          notification_id=$(echo "$response" | jq -r ".[] | select(.subject.url | contains(\"pulls/$pr_id\")) | .id")
           if [ -n "$notification_id" ]; then
             curl -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/notifications/threads/$notification_id
           else
             echo "Notification not found"
           fi
         env:
-          GH_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
