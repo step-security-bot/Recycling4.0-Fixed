@@ -63,6 +63,8 @@ jobs:
           else
             echo "PR_NUMBER=" >> $GITHUB_ENV
           fi
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
 
       # Step to enable auto-merge for the pull request if the actor is 'Nick2bad4u'
       - name: Enable Pull Request Automerge
@@ -72,6 +74,8 @@ jobs:
           token: ${{ secrets.TOKEN }}
           pull-request-number: ${{ env.PR_NUMBER }}
           merge-method: squash
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
 
       # Step to merge the pull request automatically using the GitHub CLI
       - name: Merge Pull Request
@@ -92,4 +96,4 @@ jobs:
             echo "Notification not found"
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GH_TOKEN: ${{ secrets.TOKEN }}
