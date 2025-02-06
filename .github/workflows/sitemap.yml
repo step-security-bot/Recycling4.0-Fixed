@@ -97,16 +97,19 @@ jobs:
             https://api.github.com/notifications \
             -d '{"last_read_at":"'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'","read":true}')
 
-          if [ "$response" -eq 202 ]; then
+          echo "API Response: $response"
+          status_code=$(echo $response | jq -r '.status')
+
+          if [ "$status_code" -eq 202 ]; then
             echo "Notifications are being marked as read in the background."
-          elif [ "$response" -eq 205 ]; then
+          elif [ "$status_code" -eq 205 ]; then
             echo "All notifications have been marked as read."
           else
-            echo "Failed to mark notifications as read. HTTP status code: $response"
+            echo "Failed to mark notifications as read. Response: $response"
             exit 1
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       # Optional step to list notifications for debugging
       - name: List Notifications
